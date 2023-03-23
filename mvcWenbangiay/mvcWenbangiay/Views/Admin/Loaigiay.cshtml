@@ -1,0 +1,32 @@
+﻿@model IEnumerable<mvcWenbangiay.Models.LOAIGIAY>
+
+@{
+    ViewBag.Title = "Loaigiay";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center">DANH SÁCH LOẠI GIÀY</h2>
+
+<p>
+    @Html.ActionLink("THÊM", "Themloaigiay")
+</p>
+<table class="table" align="center">
+    <tr style="text-align:center">
+        <th>
+            Tên loại giày
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr style="text-align:center">
+        <td>
+            @Html.DisplayFor(modelItem => item.TenLoaiGiay)
+        </td>
+        <td>
+            @Html.ActionLink("Xóa", "Xoaloai", new { id=item.MaLG })
+        </td>
+    </tr>
+}
+
+</table>

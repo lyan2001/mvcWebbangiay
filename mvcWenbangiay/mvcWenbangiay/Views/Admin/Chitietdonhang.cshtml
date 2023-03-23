@@ -1,0 +1,42 @@
+﻿@model mvcWenbangiay.Models.CHITIETDONTHANG
+
+@{
+    ViewBag.Title = "Chitietdonhang";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center">CHI TIẾT ĐƠN HÀNG</h2>
+
+
+<div style="margin-left:20px">
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên sản phẩm
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GIAY.Tengiay)
+        </dd>
+        <dt>
+            Số lượng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Soluong)
+        </dd>
+
+        <dt>
+            Đơn giá
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dongia)
+        </dd>
+
+    </dl>
+</div>
+<p style="margin-left:20px">
+    @*@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |*@
+    @Html.ActionLink("QUAY LẠI", "Donhang")
+</p>

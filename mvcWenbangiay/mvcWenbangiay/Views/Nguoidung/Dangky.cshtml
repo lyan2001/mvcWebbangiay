@@ -1,0 +1,105 @@
+﻿@model mvcWenbangiay.Models.KHACHHANG
+
+@{
+    ViewBag.Title = "Dangky";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<h2 style="text-align:center">ĐĂNG KÝ THÀNH VIÊN</h2>
+<table align="center">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @*@Html.LabelFor(model => model.HoTen, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                <label class="control-label col-md-2">Họ và tên</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
+                    @ViewData["Loi1"]
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Tên đăng nhập</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Taikhoan, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Taikhoan, "", new { @class = "text-danger" })
+                    @ViewData["Loi2"]
+                    @ViewBag.Warning1
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Mật khẩu</label>
+                <div class="col-md-10">
+                    @*@Html.EditorFor(model => model.Matkhau, new { htmlAttributes = new { @class = "form-control" } })*@
+                    <input class="form-control text-box single-line" id="Matkhau" name="Matkhau" type="password" value="">
+                    @Html.ValidationMessageFor(model => model.Matkhau, "", new { @class = "text-danger" })
+                    @ViewData["Loi3"]
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">Nhập lại mật khẩu</label>
+                <div class="col-md-10">
+                    <input class="form-control text-box single-line" id="Matkhaunhaplai" name="Matkhaunhaplai" type="password" value="">
+                    <span class="field-validation-valid text-danger" data-valmsg-for="Matkhaunhaplai" data-valmsg-replace="true"></span>
+                    @ViewData["Loi4"]
+                    @ViewBag.Warning
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Email</label>
+                @*<div class="col-md-10">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    @ViewData["Loi5"]
+                </div>*@
+                <div class="col-md-10">
+                    <input class="form-control text-box single-line" id="Email" name="Email" type="email" value="">
+                    <span class="field-validation-valid text-danger" data-valmsg-for="Email" data-valmsg-replace="true"></span>
+                    @ViewData["Loi5"]
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Địa chỉ</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DiachiKH, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DiachiKH, "", new { @class = "text-danger" })
+                    @ViewData["Loi6"]
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                <label class="control-label col-md-2">Số điện thoại</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DienthoaiKH, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DienthoaiKH, "", new { @class = "text-danger" })
+                    @ViewData["Loi7"]
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Ngày sinh</label>
+                <div class="col-md-10">
+                    @*@Html.EditorFor(model => model.Ngaysinh, new { htmlAttributes = new { @class = "form-control" } })*@
+                    <input class="form-control text-box single-line" data-val="true" data-val-date="The field Ngaysinh must be a date." id="Ngaysinh" name="Ngaysinh" type="date" value="">
+                    @Html.ValidationMessageFor(model => model.Ngaysinh, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Đăng ký" class="btn btn-outline-secondary" />
+                </div>
+            </div>
+        </div>
+    }
+</table>
+

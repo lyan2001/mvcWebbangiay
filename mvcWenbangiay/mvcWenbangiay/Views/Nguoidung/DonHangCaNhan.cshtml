@@ -1,0 +1,85 @@
+﻿@model IEnumerable<mvcWenbangiay.Models.DONDATHANG>
+@{
+    ViewBag.Title = "DonHangCaNhan";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<h2 style="text-align:center">LỊCH SỬ ĐƠN HÀNG </h2>
+<br />
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+<table class="table">
+    <tr>
+        <th>
+            Họ tên khách hàng
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Dathanhtoan)
+        </th>*@
+        <th>
+            Ngày đặt
+        </th>
+        @*<th>
+            Ngày giao
+        </th>*@
+        <th>
+            Phương thức thanh toán
+        </th>
+        <th>
+            Tình trạng
+        </th>
+        <th>
+            SĐT
+        </th>
+        <th>
+            Địa chỉ
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.MaKH)
+        </th>*@
+        <th>Quản lý</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.KHACHHANG.HoTen)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Dathanhtoan)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Ngaydat)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Ngaygiao)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Phuongthuc.PhuongThucThanhToan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TrangThai1.TenTrangthai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KHACHHANG.DienthoaiKH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KHACHHANG.DiachiKH)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.MaKH)
+                </td>*@
+            <td>
+
+                @Html.ActionLink("Chi tiết", "CTDonHang", new { id = item.MaDonHang })
+
+            </td>
+        </tr>
+    }
+
+</table>
+<p>
+    @Html.ActionLink("Quay lại", "Thongtin", "Nguoidung")
+</p>

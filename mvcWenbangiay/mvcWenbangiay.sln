@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32407.337
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mvcWenbangiay", "mvcWenbangiay\mvcWenbangiay.csproj", "{0FCCB515-E43B-4B5F-A9D2-A0F881E448A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{7A6B8F23-C535-4881-AFB7-38206807BA17}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0FCCB515-E43B-4B5F-A9D2-A0F881E448A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FCCB515-E43B-4B5F-A9D2-A0F881E448A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FCCB515-E43B-4B5F-A9D2-A0F881E448A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FCCB515-E43B-4B5F-A9D2-A0F881E448A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A6B8F23-C535-4881-AFB7-38206807BA17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A6B8F23-C535-4881-AFB7-38206807BA17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A6B8F23-C535-4881-AFB7-38206807BA17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A6B8F23-C535-4881-AFB7-38206807BA17}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {458FE47A-781C-48BC-9823-B2FB0632369A}
+	EndGlobalSection
+EndGlobal

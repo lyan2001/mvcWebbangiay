@@ -1,0 +1,170 @@
+﻿@model PagedList.PagedList<mvcWenbangiay.Models.GIAY>
+@using mvcWenbangiay.Models;
+@using PagedList.Mvc;
+
+@helper Truncate(string input, int length)
+{
+    if (input.Length < length)
+    {
+        @input
+    }
+    else
+    {
+        @input.Substring(0, length)<textarea>...</textarea>
+    }
+}
+
+    @{
+        ViewBag.Title = "Giay";
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    }
+
+    @using (Html.BeginForm("Giay", "Admin", FormMethod.Get))
+    {
+        <!-- Topbar Search -->
+        <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+            <div class="input-group">
+                <input name="Tukhoa" type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                        aria-label="Search" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <input class="btn btn-secondary"  type="submit" value="Tìm kiếm"/>
+                    @*<button class="btn btn-primary" type="button">
+                        <i class="fas fa-search fa-sm"></i>
+                    </button>*@
+                </div>  
+            </div>
+        </form>
+
+    }
+<hr />
+    <h2 style="text-align:center"><a href="@Url.Action("Giay", "Admin")">DANH SÁCH GIÀY</a></h2>
+
+    <p>
+        @Html.ActionLink("THÊM MỚI", "Themmoigiay") 
+
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                Tên giày 
+            </th>
+            <th>
+                Giá bán
+            </th>
+            @*<th>
+                Mô tả
+            </th>*@
+            <th>
+                Ảnh chính
+            </th>
+            <th>
+                Ảnh phụ 1
+            </th>
+            <th>
+                Ảnh phụ 2
+            </th>
+            <th>
+                Ngày cập nhật
+            </th>
+            <th>
+                Số lượng tồn
+            </th>
+            <th>
+                Loại giày
+            </th>
+            <th>
+                Hãng giày
+            </th>
+            @*<th>
+                Size
+            </th>*@
+
+            <th>
+                Quản lý
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tengiay)
+                </td>
+                <td>
+                    @String.Format("{0:0,0}", item.Giaban) VNĐ
+                </td>
+                @*<td>
+                    @Truncate(item.Mota, 100)
+                </td>*@
+                <td>
+                    <img src="@Url.Content("~/Hinhsanpham/"+ item.Anhbia)" style="width:70px" />
+                </td>
+                <td>
+                    <img src="@Url.Content("~/Hinhsanpham/"+ item.Anhbia1)" style="width:70px" />
+                </td>
+                <td>
+                    <img src="@Url.Content("~/Hinhsanpham/"+ item.Anhbia2)" style="width:70px" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ngaycapnhat)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Soluongton)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LOAIGIAY.TenLoaiGiay)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HANGGIAY.TenHG)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.Size)
+                </td>*@
+
+                <td width="200px">
+                    @Html.ActionLink("Sửa", "Suagiay", new { id = item.Magiay }) |
+                    @Html.ActionLink("Chi tiết", "Chitietgiay", new { id = item.Magiay }) |
+                    @Html.ActionLink("Xóa", "Xoagiay", new { id = item.Magiay })
+                </td>
+            </tr>
+        }
+
+    </table>
+    @*tao lien ket cac trang*@
+    Trang @(Model.PageCount<Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+    <div class="MenuTrang">
+        @Html.PagedListPager(Model, page => Url.Action("Giay", new { page = page }))
+    </div>
+    <hr />
+    <style>
+
+        .MenuTrang li {
+            text-align: center;
+            display: inline;
+            width: 40px;
+            height: 40px;
+            border: 1px solid white;
+        }
+
+            .MenuTrang li:hover {
+                background-color: cornflowerblue;
+            }
+
+        .MenuTrang a {
+            text-align: center;
+        }
+
+        .input-group {
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: stretch;
+            width: 30%;
+            border: 2px solid #d9d7e1;
+        }
+        .form-control bg-light border-0 small {
+            border-radius: 6px;
+            
+        }
+
+    </style>

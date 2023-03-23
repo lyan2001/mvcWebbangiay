@@ -1,0 +1,70 @@
+﻿@model IEnumerable<mvcWenbangiay.Models.KHACHHANG>
+
+@{
+    ViewBag.Title = "Khachhang";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center">DANH SÁCH KHÁCH HÀNG</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table">
+    <tr>
+        <th>
+            Họ tên khách hàng
+        </th>
+        <th>
+            Tài khoản
+        </th>
+        @*<th>
+            Mật khẩu
+        </th>*@
+        <th>
+            Email
+        </th>
+        <th>
+            Địa chỉ
+        </th>
+        <th>
+            Số điện thoại
+        </th>
+        <th>
+            Ngày sinh
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.HoTen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Taikhoan)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Matkhau)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiachiKH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DienthoaiKH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ngaysinh)
+        </td>
+        <td>           
+            @*@Html.ActionLink("CHI TIẾT", "Chitietkhachhang", new { id=item.MaKH }) |*@
+            @Html.ActionLink("XÓA", "Xoakhachhang", new { id=item.MaKH })
+        </td>
+    </tr>
+}
+
+</table>

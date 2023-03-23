@@ -1,0 +1,57 @@
+﻿@using mvcWenbangiay.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<GIAY>
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<div class="row">
+    <div class="col">
+        <div class="product-grid" data-isotope='{ "itemSelector": ".product-item", "layoutMode": "fitRows" }'>
+            @foreach (var giay in Model)
+            {
+                <div class="product-item men">
+                    <div class="product discount product_filter">
+                        <div class="product_image">
+                            <a href="@Url.Action("Details", "ShoesStore", new { id = giay.Magiay })"><img alt="@giay.Tengiay" src="~/Hinhsanpham/@giay.Anhbia" /></a>
+                            
+                        </div>
+                        <div class="favorite favorite_left"></div>
+                        <div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>new</span></div>
+                        <div class="product_info">
+                            <h6 class="product_name"><a href="@Url.Action("Details", "ShoesStore", new { id = giay.Magiay })">@giay.Tengiay</a></h6>
+                            <div class="product_price">@String.Format("{0:0,0}", giay.Giaban) VNĐ</div>
+                        </div>
+                    </div>
+                    <div class="red_button add_to_cart_button"><a href="@Url.Action("ThemGiohang","GioHang",new { @iMagiay =giay.Magiay,@strURL=Request.Url.ToString()})">add to cart</a></div>
+                </div>
+            }
+        </div>
+
+    </div>
+</div>
+<hr />
+@*tao lien ket cac trang*@
+@*Trang @(Model.PageCount<Model.PageNumber?0:Model.PageNumber)/@Model.PageCount*@
+<div class="MenuTrang">
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+</div>
+<hr />
+<style>
+
+    .MenuTrang li {
+        text-align: center;
+        display: inline;
+        width: 40px;
+        height: 40px;
+        border: 1px solid white;
+        
+    }
+        .MenuTrang li:hover {
+            background-color: cornflowerblue;
+        }
+
+    .MenuTrang a {
+        text-align: center;
+    }
+</style>

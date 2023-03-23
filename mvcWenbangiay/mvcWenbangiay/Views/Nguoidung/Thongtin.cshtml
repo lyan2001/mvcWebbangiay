@@ -1,0 +1,51 @@
+﻿@model mvcWenbangiay.Models.KHACHHANG
+@using mvcWenbangiay.Models
+@{
+    ViewBag.Title = "Thông tin người dùng";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<h2 style="text-align:center">THÔNG TIN NGƯỜI DÙNG</h2>
+<div>
+    <ul>
+        <li>
+            <img src="~/images/profile.png" / height="200px" style="float:left;margin-right:70px">
+        </li>
+    </ul>
+    
+    <ul style=" margin-top: 50px">
+        <li>
+            <div style="font-weight:bold;float:left;margin-right:10px">Họ tên : </div>
+            @Html.DisplayFor(model => model.HoTen)
+        </li>
+       
+        
+        <li>
+            <div style="font-weight:bold;float:left;margin-right:10px">Email : </div>
+
+            @Html.DisplayFor(model => model.Email)
+        </li>
+        <li>
+            <div style="font-weight:bold;float:left;margin-right:10px">Địa chỉ : </div>
+
+            @Html.DisplayFor(model => model.DiachiKH)
+        </li>
+        <li>
+            <div style="font-weight:bold;float:left;margin-right:10px">Số điện thoại :</div>
+
+            @Html.DisplayFor(model => model.DienthoaiKH)
+        </li>
+        <li>
+            <div style="font-weight:bold;float:left;margin-right:10px">Ngày sinh :</div>
+
+            @Html.DisplayFor(model => model.Ngaysinh)
+        </li>
+    </ul>
+</div>
+<br /><br />
+      <p>
+          @Html.ActionLink("Quay lại", "Index", "ShoesStore") |
+          @Html.ActionLink("Sửa", "Suathongtin", new { id = Model.MaKH }) |
+
+          @Html.ActionLink("Lịch sử đơn hàng", "DonHangCaNhan", "Nguoidung")
+      </p>

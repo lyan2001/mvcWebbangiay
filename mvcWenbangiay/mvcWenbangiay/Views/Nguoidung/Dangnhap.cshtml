@@ -1,0 +1,41 @@
+﻿@model mvcWenbangiay.Models.KHACHHANG
+
+@{
+    ViewBag.Title = "Dangnhap";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<h2 style="text-align:center">ĐĂNG NHẬP</h2>
+
+<table>
+    @using (Html.BeginForm())
+    {      
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <label class="control-label col-md-2">Tên đăng nhập</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Taikhoan, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Taikhoan, "", new { @class = "text-danger" })
+                    @ViewData["Loi1"]
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Mật khẩu</label>
+                <div class="col-md-10">
+                    <input class="form-control text-box single-line" id="Matkhau" name="Matkhau" type="password" value="">
+                    @Html.ValidationMessageFor(model => model.Matkhau, "", new { @class = "text-danger" })
+                    @ViewData["Loi2"]
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Đăng nhập" class="btn btn-outline-secondary" />
+            </div>
+        </div>
+    }
+</table>
+<h4>@ViewBag.Thongbao</h4>
+

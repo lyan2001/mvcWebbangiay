@@ -1,0 +1,40 @@
+﻿@model mvcWenbangiay.Models.HANGGIAY
+
+@{
+    ViewBag.Title = "Xoahang";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>XÓA HÃNG GIÀY</h2>
+
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên hãng
+        </dt>
+
+        <dd style="font-size:30px">
+            @Html.DisplayFor(model => model.TenHG)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <hr />
+        <div class="form-actions no-color">
+
+            <input type="submit" value="XÓA" class="btn btn-danger" />
+
+        </div>
+        <hr />
+        <divclass ="form-actions no-color">
+            @Html.ActionLink("QUAY LẠI", "Hanggiay")
+        </divclass>
+
+    }
+</div>

@@ -1,0 +1,36 @@
+﻿@model mvcWenbangiay.Models.HANGGIAY
+
+@{
+    ViewBag.Title = "Themhanggiay";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center">THÊM HÃNG GIÀY</h2>
+
+@using (Html.BeginForm("Themhanggiay", "Admin", FormMethod.Post, new {@enctype="multipart/form-data"})) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal" style="margin-left:10px">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            Tên hãng giày
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TenHG, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TenHG, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="THÊM" class="btn btn-danger" />
+            </div>
+        </div>
+    </div>
+}
+
+<div style="margin-left:10px">
+    @Html.ActionLink("QUAY LẠI", "Hanggiay")
+    
+</div>

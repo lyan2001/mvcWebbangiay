@@ -1,0 +1,133 @@
+﻿
+@model PagedList.PagedList<mvcWenbangiay.Models.DONDATHANG>
+@using mvcWenbangiay.Models;
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Donhang";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@using (Html.BeginForm("Donhang", "Admin", FormMethod.Get))
+{
+    <!-- Topbar Search -->
+    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+        <div class="input-group">
+            <input name="Tukhoaa" type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                   aria-label="Search" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <input class="btn btn-secondary" type="submit" value="Tìm kiếm" />
+                @*<button class="btn btn-primary" type="button">
+                        <i class="fas fa-search fa-sm"></i>
+                    </button>*@
+            </div>
+        </div>
+    </form>
+
+}
+
+<h2 style="text-align:center"><a href="@Url.Action("Donhang", "Admin")">DANH SÁCH ĐƠN HÀNG</a></h2>
+
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+<table class="table">
+    <tr>
+        <th>
+            Mã đơn hàng
+        </th>
+        <th>
+            Tên khách hàng
+        </th>
+        <th>
+            Địa chỉ giao hàng
+        </th>
+        <th>
+            Ngày đặt
+        </th>
+        @*<th>
+            Ngày giao
+        </th>*@
+
+
+        <th>
+            Hình thức thanh toán
+        </th>
+        <th>
+            Trạng thái
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaDonHang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KHACHHANG.HoTen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KHACHHANG.DiachiKH)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Ngaydat)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Ngaygiao)
+            </td>*@
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Phuongthuc.PhuongThucThanhToan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TrangThai1.TenTrangthai)
+            </td>
+            <td>
+
+                @Html.ActionLink("CHI TIẾT", "Chitietdonhang", new { id = item.MaDonHang }) |
+                @Html.ActionLink("SỬA", "Suadonhang", new { id = item.MaDonHang })
+
+            </td>
+        </tr>
+    }
+
+</table>
+@*tao lien ket cac trang*@
+    Trang @(Model.PageCount<Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+    <div class="MenuTrang">
+        @Html.PagedListPager(Model, page => Url.Action("Donhang", new { page = page }))
+    </div>
+    <hr />
+    <style>
+
+        .MenuTrang li {
+            text-align: center;
+            display: inline;
+            width: 40px;
+            height: 40px;
+            border: 1px solid white;
+        }
+
+            .MenuTrang li:hover {
+                background-color: cornflowerblue;
+            }
+
+        .MenuTrang a {
+            text-align: center;
+        }
+
+        .input-group {
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: stretch;
+            width: 30%;
+            border: 2px solid #d9d7e1;
+        }
+
+        .form-control bg-light border-0 small {
+            border-radius: 6px;
+        }
+    </style>

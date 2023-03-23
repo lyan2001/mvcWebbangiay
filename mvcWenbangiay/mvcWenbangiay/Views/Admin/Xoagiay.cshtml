@@ -1,0 +1,50 @@
+﻿@model mvcWenbangiay.Models.GIAY
+
+@{
+    ViewBag.Title = "Xoagiay";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center">XÁC NHẬN THÔNG TIN GIÀY CẦN XÓA</h2>
+<div style="margin-left:35px">
+    
+    <hr />
+    <table class="table">
+        <tr>
+            <th>Tên giày</th>
+            <th>Giá bán</th>
+            <th> Mô tả</th>
+            <th>Ảnh chính</th>
+            <th> Ảnh phụ 1</th>
+            <th>Ảnh phụ 2</th>
+            <th>Ngày cập nhật</th>
+            <th>Số lượng tồn</th>
+            <th>Loại giày</th>
+            <th> Hãng giày</th>
+            <th>Size</th>
+        </tr>
+        <tr>
+            <td>@Html.DisplayFor(model => model.Tengiay)</td>
+            <td>@String.Format("{0:0,0}", Model.Giaban) VNĐ</td>
+            <td>@Html.DisplayFor(model => model.Mota)</td>
+            <td><img src="@Url.Content("~/Hinhsanpham/" + Model.Anhbia)" style="width: 130px" /></td>
+            <td> <img src="@Url.Content("~/Hinhsanpham/"+ Model.Anhbia1)" style="width:130px" /></td>
+            <td><img src="@Url.Content("~/Hinhsanpham/"+ Model.Anhbia2)" style="width: 130px" /></td>
+            <td>@String.Format("{0:dd/MM/yyyy}", Model.Ngaycapnhat)</td>
+            <td>@Html.DisplayFor(model => model.Soluongton)</td>
+            <td> @Html.DisplayFor(model => model.LOAIGIAY.TenLoaiGiay)</td>
+            <td>@Html.DisplayFor(model => model.HANGGIAY.TenHG)</td>
+            <td>@Html.DisplayFor(model => model.Size)</td>
+        </tr>
+
+    </table>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="XÓA" class="btn btn-default" /> |
+            @Html.ActionLink("QUAY LẠI", "Giay")
+        </div>
+    }
+</div>

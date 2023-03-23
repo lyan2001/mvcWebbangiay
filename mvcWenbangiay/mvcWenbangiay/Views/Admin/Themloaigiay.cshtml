@@ -1,0 +1,35 @@
+﻿@model mvcWenbangiay.Models.LOAIGIAY
+
+@{
+    ViewBag.Title = "Themloaigiay";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center">THÊM LOẠI GIÀY</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal" style="margin-left:10px">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            Tên loại giày
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TenLoaiGiay, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TenLoaiGiay, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="THÊM" class="btn btn-danger" />
+            </div>
+        </div>
+    </div>
+}
+
+<div style="margin-left:10px">
+    @Html.ActionLink("QUAY LẠI", "Loaigiay")
+</div>
